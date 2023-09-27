@@ -8,13 +8,23 @@ using namespace std;
 //allocates it into an array of 6 rats.
 int main(){
 	string brd, nm, cmt, clr, fFd;
+	int cap;
 	float wgt;
 	char gndr;
 
-	//Change to 6 rats before turn in
-	Rat* ratArray = new Rat[6];
+	//Ask for rat capacity
+	do{
+		cout << "How many rats to be recorded?(1-6)" << endl;
+		cin >> cap;
+	}while(cap < 1 || cap > 6);
 
-	for(int i = 0; i< 6; i++){
+
+
+
+	//Change to 6 rats before turn in
+	Rat* ratArray = new Rat[cap];
+
+	for(int i = 0; i< cap; i++){
 		cout << "Please enter the name of the rat " <<"( #" << i+1 << ")" <<endl;
 		cin >> nm;
 		cout << "Please enter the breed of the rat " << endl;
@@ -33,7 +43,7 @@ int main(){
 		getline(cin, cmt);
 		ratArray[i] = Rat(brd,wgt,nm,gndr,fFd,clr,cmt);
 	}
-	for(int i = 0; i<6;i++){
+	for(int i = 0; i < cap;i++){
 		cout << "Rat #: " << i+1 << endl;
 		ratArray[i].printInfo();
 	}
